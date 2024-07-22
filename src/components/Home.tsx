@@ -1,25 +1,37 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useActions } from '../hooks/useAction';
 import { useTypedSelector } from '../hooks/useTypedSelector';
+import { Button } from 'react-bootstrap';
 
 const Home: React.FC = () => {
   const { news, error, loading } = useTypedSelector((state) => state.news);
-  const { fetchNews } = useActions();
+  const { fetchNews, setNewsPage } = useActions();
+  const [page, setPage] = useState(1);
   useEffect(() => {
-    fetchNews();
-  }, []);
+    fetchNews(page);
+  }, [page]);
+
+  const onBtnClick = () => {
+    setPage((prev) => prev + 1);
+    setNewsPage(page);
+  };
+
   if (loading) {
     return <h1>...идет загрузка</h1>;
   }
   if (error) {
     return <h1>{error}</h1>;
   }
+
   return (
     <>
       <h1>Главная страница</h1>
       {news.map((item) => (
         <div key={item.id}>{item.title}</div>
       ))}
+      <div>
+        <Button onClick={onBtnClick}>More ...</Button>
+      </div>
     </>
   );
 };

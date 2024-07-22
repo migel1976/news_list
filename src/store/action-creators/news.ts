@@ -2,12 +2,11 @@ import { Dispatch } from 'redux';
 import { NewsAction, NewsActionTypes } from '../../types/news';
 import axios from 'axios';
 
-const url = 'https://api.hnpwa.com/v0/news/1.json';
-
-export const fetchNews = () => {
+export const fetchNews = (page: number = 1) => {
   return async (dispatch: Dispatch<NewsAction>) => {
     try {
       dispatch({ type: NewsActionTypes.FETCH_NEWS });
+      const url = `https://api.hnpwa.com/v0/news/${page}.json`;
       const res = await axios.get(url);
       setTimeout(() => {
         dispatch({ type: NewsActionTypes.FETCH_NEWS_SUCCESS, payload: res.data });
@@ -16,4 +15,8 @@ export const fetchNews = () => {
       dispatch({ type: NewsActionTypes.FETCH_NEWS_ERROR, payload: 'Ошибка при получении пользователей' });
     }
   };
+};
+
+export const setNewsPage = (page: number): NewsAction => {
+  return { type: NewsActionTypes.SET_NEWS_PAGE, payload: page };
 };

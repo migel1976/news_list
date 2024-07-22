@@ -2,12 +2,14 @@ export interface NewsState {
   news: any[];
   loading: boolean;
   error: null | string;
+  page: number;
 }
 
 export enum NewsActionTypes {
   FETCH_NEWS = 'FETCH_NEWS',
   FETCH_NEWS_SUCCESS = 'FETCH_NEWS_SUCCESS',
   FETCH_NEWS_ERROR = 'FETCH_NEWS_ERROR',
+  SET_NEWS_PAGE = 'SET_NEWS_PAGE',
 }
 
 interface FetchNewsAction {
@@ -24,4 +26,9 @@ interface FetchNewsErrorAction {
   payload: string;
 }
 
-export type NewsAction = FetchNewsAction | FetchNewsSuccessAction | FetchNewsErrorAction;
+interface SetNewsPage {
+  type: NewsActionTypes.SET_NEWS_PAGE;
+  payload: number;
+}
+
+export type NewsAction = FetchNewsAction | FetchNewsSuccessAction | FetchNewsErrorAction | SetNewsPage;
