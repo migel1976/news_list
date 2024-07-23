@@ -12,7 +12,7 @@ export const fetchNews = (page: number = 1) => {
         dispatch({ type: NewsActionTypes.FETCH_NEWS_SUCCESS, payload: res.data });
       }, 1000);
     } catch (e) {
-      dispatch({ type: NewsActionTypes.FETCH_NEWS_ERROR, payload: 'Ошибка при получении пользователей' });
+      dispatch({ type: NewsActionTypes.FETCH_NEWS_ERROR, payload: 'Ошибка при получении новостей' });
     }
   };
 };
