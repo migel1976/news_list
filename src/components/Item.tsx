@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 import { useActions } from '../hooks/useAction';
 import { useTypedSelector } from '../hooks/useTypedSelector';
+import { Link } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 
 const Item: React.FC = () => {
   const { item, error, loading } = useTypedSelector((state) => state.item);
@@ -23,9 +25,9 @@ const Item: React.FC = () => {
     <>
       <div>{item.title}</div>
       <div>{item.comments_count}</div>
-      {/* {item.map((el) => {
-        <div key={el.id}>{el.comments_count}</div>;
-      })} */}
+      <Link to="/">
+        <Button onClick={() => console.log('обратно')}>Назад</Button>
+      </Link>
     </>
   );
 };

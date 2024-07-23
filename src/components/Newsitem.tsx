@@ -22,15 +22,23 @@ const Newsitem = ({ item }) => {
   const showItem = (id) => {
     setItemPage(id);
   };
+
+  const getData = () => {
+    // return item.points;
+    return new Date(item.time).toLocaleString();
+  };
   return (
     <Row>
       <Col>
         <ItemContainer>
           <Card>
             <Card.Body>
-              <Card.Title>{item.time_ago}</Card.Title>
+              {/* <Card.Title>{item.time_ago}</Card.Title> */}
+              <Card.Title>{item.title}</Card.Title>
+              <Card.Title>Автор статьи: {item.user}</Card.Title>
+              <Card.Title>Рейтинг: {item.points}</Card.Title>
+              <Card.Title>Дата публикации: {getData()}</Card.Title>
               <Card.Text>
-                {item.title}
                 <Link to="/item">
                   <Button onClick={() => showItem(item.id)}>Подробнее...</Button>
                 </Link>
