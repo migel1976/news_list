@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useActions } from '../hooks/useAction';
 import { useTypedSelector } from '../hooks/useTypedSelector';
 import { Button } from 'react-bootstrap';
+import Newsitem from './Newsitem';
 
 const Home: React.FC = () => {
   const { news, error, loading } = useTypedSelector((state) => state.news);
@@ -27,7 +28,8 @@ const Home: React.FC = () => {
     <>
       <h1>Главная страница</h1>
       {news.map((item) => (
-        <div key={item.id}>{item.title}</div>
+        <Newsitem key={item.id} item={item} />
+        // <div key={item.id}>{item.title}</div>
       ))}
       <div>
         <Button onClick={onBtnClick}>More ...</Button>
