@@ -3,6 +3,12 @@ import { useActions } from '../hooks/useAction';
 import { useTypedSelector } from '../hooks/useTypedSelector';
 import { Button } from 'react-bootstrap';
 import Newsitem from './Newsitem';
+import styled from 'styled-components';
+
+const Navigate = styled.div`
+  display: flex;
+  gap: 20px;
+`;
 
 const Home: React.FC = () => {
   const { news, error, loading } = useTypedSelector((state) => state.news);
@@ -12,9 +18,13 @@ const Home: React.FC = () => {
     fetchNews(page);
   }, [page]);
 
-  const onBtnClick = () => {
+  const nextPage = () => {
     setPage((prev) => prev + 1);
     setNewsPage(page);
+  };
+
+  const refreshPage = () => {
+    fetchNews(1);
   };
 
   if (loading) {
@@ -26,14 +36,19 @@ const Home: React.FC = () => {
 
   return (
     <>
-      <h1>Главная страница</h1>
+      <h1>Лента новостей</h1>
+      <Navigate>
+        <div>
+          <Button onClick={refreshPage}>Обновить</Button>
+        </div>
+        <div>
+          <Button onClick={nextPage}>Следующая</Button>
+        </div>
+      </Navigate>
       {news.map((item) => (
         <Newsitem key={item.id} item={item} />
         // <div key={item.id}>{item.title}</div>
       ))}
-      <div>
-        <Button onClick={onBtnClick}>More ...</Button>
-      </div>
     </>
   );
 };

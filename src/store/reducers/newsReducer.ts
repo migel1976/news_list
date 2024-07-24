@@ -13,6 +13,9 @@ export const newsReducer = (state = initialState, action: NewsAction): NewsState
       return { ...state, loading: true };
 
     case NewsActionTypes.FETCH_NEWS_SUCCESS:
+      action.payload.sort(function (a, b) {
+        return new Date(b.time * 1000) - new Date(a.time * 1000);
+      });
       return { ...state, loading: false, news: action.payload };
 
     case NewsActionTypes.FETCH_NEWS_ERROR:

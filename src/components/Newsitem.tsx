@@ -25,8 +25,23 @@ const Newsitem = ({ item }) => {
 
   const getData = () => {
     // return item.points;
-    return new Date(item.time).toLocaleString();
+    return new Date(item.time * 1000).toLocaleString();
   };
+
+  // function timeConverter() {
+  //   const UNIX_timestamp = item.time;
+  //   let a = new Date(UNIX_timestamp * 1000);
+  //   let months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  //   let year = a.getFullYear();
+  //   let month = months[a.getMonth()];
+  //   let date = a.getDate();
+  //   let hour = a.getHours();
+  //   let min = a.getMinutes();
+  //   let sec = a.getSeconds();
+  //   let time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec;
+  //   return time;
+  // }
+
   return (
     <Row>
       <Col>
@@ -38,6 +53,7 @@ const Newsitem = ({ item }) => {
               <Card.Title>Автор статьи: {item.user}</Card.Title>
               <Card.Title>Рейтинг: {item.points}</Card.Title>
               <Card.Title>Дата публикации: {getData()}</Card.Title>
+              {/* <Card.Title>Дата публикации: {timeConverter()}</Card.Title> */}
               <Card.Text>
                 <Link to="/item">
                   <Button onClick={() => showItem(item.id)}>Подробнее...</Button>
