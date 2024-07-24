@@ -1,5 +1,5 @@
 export interface ItemState {
-  item: any[];
+  item: any;
   loading: boolean;
   error: null | string;
   page: number;

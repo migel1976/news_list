@@ -3,44 +3,27 @@ import styled from 'styled-components';
 import { useActions } from '../hooks/useAction';
 import { Link } from 'react-router-dom';
 const ItemContainer = styled.div`
-  // border: 1px solid #0f0;
   padding-block: 5px;
   margin-block: 5px;
   .card-text {
     display: flex;
-    justify-content: space-around;
+    // justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
-    background: grey;
-    align-content: space-between;
+    // background: grey;
+    // align-content: space-between;
   }
 `;
 
 const Newsitem = ({ item }) => {
-  // return <ItemContainer>{props.item.title}</ItemContainer>;
   const { setItemPage } = useActions();
   const showItem = (id) => {
     setItemPage(id);
   };
 
   const getData = () => {
-    // return item.points;
     return new Date(item.time * 1000).toLocaleString();
   };
-
-  // function timeConverter() {
-  //   const UNIX_timestamp = item.time;
-  //   let a = new Date(UNIX_timestamp * 1000);
-  //   let months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-  //   let year = a.getFullYear();
-  //   let month = months[a.getMonth()];
-  //   let date = a.getDate();
-  //   let hour = a.getHours();
-  //   let min = a.getMinutes();
-  //   let sec = a.getSeconds();
-  //   let time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec;
-  //   return time;
-  // }
 
   return (
     <Row>
@@ -53,10 +36,11 @@ const Newsitem = ({ item }) => {
               <Card.Title>Автор статьи: {item.user}</Card.Title>
               <Card.Title>Рейтинг: {item.points}</Card.Title>
               <Card.Title>Дата публикации: {getData()}</Card.Title>
-              {/* <Card.Title>Дата публикации: {timeConverter()}</Card.Title> */}
               <Card.Text>
+                {/* <Link to="/item" onClick={() => showItem(item.id)} target="_blank"> */}
+                {/* Подробнее */}
                 <Link to="/item">
-                  <Button onClick={() => showItem(item.id)}>Подробнее...</Button>
+                  <Button onClick={() => showItem(item.id)}>Подробнее</Button>
                 </Link>
               </Card.Text>
             </Card.Body>
