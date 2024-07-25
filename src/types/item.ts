@@ -32,7 +32,8 @@ export interface NewsItem {
 
 export interface ItemState {
   // item: NewsItem | object;
-  item: NewsItem;
+  item: NewsItem | Record<string, never>;
+  // item: NewsItem;
   loading: boolean;
   error: null | string;
   page: number;

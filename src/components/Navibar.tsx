@@ -5,6 +5,7 @@ import styled from 'styled-components';
 
 const Style = styled.div`
   a.nav-link {
+    padding-left: 20px;
     color: #0f0;
     &:hover {
       color: #f00;
@@ -15,7 +16,7 @@ const Navibar: React.FC = () => {
   return (
     <>
       <Style>
-        <Navbar bg="dark" variant="dark">
+        <Navbar bg="dark" variant="dark" expand="lg">
           <NavbarBrand>
             <Nav.Link as={Link} to="/">
               Новости из мира IT

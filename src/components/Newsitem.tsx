@@ -1,17 +1,8 @@
 import { Row, Col, Card, Button } from 'react-bootstrap';
-import styled from 'styled-components';
 import { useActions } from '../hooks/useAction';
 import { Link } from 'react-router-dom';
 import { News } from '../types/news';
-const ItemContainer = styled.div`
-  padding-block: 5px;
-  margin-block: 5px;
-  .card-text {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-`;
+import { ItemContainer } from './Newsitem.styles';
 
 interface NewsItemProps {
   item: News;
@@ -33,13 +24,12 @@ const Newsitem = ({ item }: NewsItemProps) => {
         <ItemContainer>
           <Card>
             <Card.Body>
-              <Card.Title>{item.title}</Card.Title>
-              <Card.Title>Автор статьи: {item.user}</Card.Title>
-              <Card.Title>Рейтинг: {item.points}</Card.Title>
-              <Card.Title>Дата публикации: {getData()}</Card.Title>
-              <Card.Title>Time ago: {item.time_ago}</Card.Title>
-              <Card.Title>Количество комментарий: {item.comments_count}</Card.Title>
-              <Card.Text></Card.Text>
+              <Card.Title className="text-uppercase">{item.title}</Card.Title>
+              <Card.Subtitle>Автор статьи: {item.user}</Card.Subtitle>
+              <Card.Subtitle>Рейтинг: {item.points}</Card.Subtitle>
+              <Card.Subtitle>Дата публикации: {getData()}</Card.Subtitle>
+              {/* <Card.Title>Time ago: {item.time_ago}</Card.Title> */}
+              <Card.Subtitle>Количество комментарий: {item.comments_count}</Card.Subtitle>
               <Card.Footer>
                 <Link to="/item">
                   <Button onClick={() => showItem(item)}>Подробнее</Button>

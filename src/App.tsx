@@ -10,8 +10,8 @@ import Item from './components/Item';
 const App: React.FC = () => {
   return (
     <>
+      <Navibar />
       <Container>
-        <Navibar />
         <Routes>
           <Route path="/" element={<Home />}>
             Главная

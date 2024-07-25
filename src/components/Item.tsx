@@ -4,6 +4,7 @@ import { useTypedSelector } from '../hooks/useTypedSelector';
 import { Link } from 'react-router-dom';
 import { Button, Card } from 'react-bootstrap';
 import Comment from './Comment';
+import { BackButton } from './Item.styles';
 
 const Item: React.FC = () => {
   const { item, error, loading } = useTypedSelector((state) => state.item);
@@ -35,15 +36,21 @@ const Item: React.FC = () => {
 
   return (
     <>
+      <h1>Подробности</h1>
+      <BackButton>
+        <Link to="/">
+          <Button onClick={backPage}>Назад</Button>
+        </Link>
+      </BackButton>
       <Card>
         <Card.Body>
-          <Link to={item.url} target="_blank">
-            Источник новости
-          </Link>
           <Card.Title>Название статьи: {item.title}</Card.Title>
           <Card.Title>Дата публикации: {getData()}</Card.Title>
           <Card.Title>Автор статьи: {item.user}</Card.Title>
-          <Card.Title>Количество комментариев: {item.comments_count}</Card.Title>
+          {/* <Card.Title>Количество комментариев: {item.comments_count}</Card.Title> */}
+          <Link to={item.url} target="_blank">
+            Источник новости
+          </Link>
           <Card.Text>
             {item && item.comments && item.comments.length > 0 ? `Комментарии` : <></>}
             {item && item.comments && item.comments.length > 0 ? (
@@ -54,11 +61,7 @@ const Item: React.FC = () => {
               <></>
             )}
           </Card.Text>
-          <Card.Footer>
-            <Link to="/">
-              <Button onClick={backPage}>Назад</Button>
-            </Link>
-          </Card.Footer>
+          <Card.Footer></Card.Footer>
         </Card.Body>
       </Card>
     </>
