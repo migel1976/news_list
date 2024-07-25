@@ -6,9 +6,8 @@ export const fetchNews = (page: number = 1) => {
   return async (dispatch: Dispatch<NewsAction>) => {
     try {
       dispatch({ type: NewsActionTypes.FETCH_NEWS });
-      const url = `https://api.hnpwa.com/v0/news/${page}.json`;
+      const url = `https://api.hnpwa.com/v0/newest/${page}.json`;
       const res = await axios.get(url);
-
       //установлен для отображения надписи Загрузка страницы
       setTimeout(() => {
         dispatch({ type: NewsActionTypes.FETCH_NEWS_SUCCESS, payload: res.data });

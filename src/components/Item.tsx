@@ -3,16 +3,18 @@ import { useActions } from '../hooks/useAction';
 import { useTypedSelector } from '../hooks/useTypedSelector';
 import { Link } from 'react-router-dom';
 import { Button, Card } from 'react-bootstrap';
+import Comment from './Comment';
 
 const Item: React.FC = () => {
   const { item, error, loading, page } = useTypedSelector((state) => state.item);
+  const news = useTypedSelector((state) => state.news);
+  const pageNews = news.page;
+
   const { fetchItem } = useActions();
-  //   const [itemPage, setItemPage] = useEffect(page);
+  const { fetchNews, setNewsPage } = useActions();
 
   useEffect(() => {
     fetchItem();
-    console.log('Item page is: ', page);
-    console.log('Item is: ', item);
   }, []);
 
   if (loading) {
@@ -27,10 +29,9 @@ const Item: React.FC = () => {
     return new Date(item.time * 1000).toLocaleString();
   };
 
-  const getComments = () => {
-    if (item && item.comments && item.comments.length > 0) {
-      return item.comments.map((el) => <div dangerouslySetInnerHTML={{ __html: el.content }}></div>);
-    }
+  const backPage = () => {
+    setNewsPage(pageNews);
+    fetchNews(pageNews);
   };
 
   return (
@@ -40,15 +41,23 @@ const Item: React.FC = () => {
           <Link to={item.url} target="_blank">
             Источник новости
           </Link>
-          <Card.Title>{item.title}</Card.Title>
+          <Card.Title>Название статьи: {item.title}</Card.Title>
           <Card.Title>Дата публикации: {getData()}</Card.Title>
           <Card.Title>Автор статьи: {item.user}</Card.Title>
           <Card.Title>Количество комментариев: {item.comments_count}</Card.Title>
-          <Card.Text>{getComments()}</Card.Text>
-          {/* <Card.Text>{item.comments}</Card.Text> */}
+          <Card.Text>
+            {item && item.comments && item.comments.length > 0 ? `Комментарии` : <></>}
+            {item && item.comments && item.comments.length > 0 ? (
+              item.comments.map((comment) => {
+                return <Comment key={comment.id} comment={comment} />;
+              })
+            ) : (
+              <></>
+            )}
+          </Card.Text>
           <Card.Footer>
             <Link to="/">
-              <Button onClick={() => console.log('обратно')}>Назад</Button>
+              <Button onClick={backPage}>Назад</Button>
             </Link>
           </Card.Footer>
         </Card.Body>

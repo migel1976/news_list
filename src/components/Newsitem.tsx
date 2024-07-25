@@ -36,6 +36,7 @@ const Newsitem = ({ item }) => {
               <Card.Title>Автор статьи: {item.user}</Card.Title>
               <Card.Title>Рейтинг: {item.points}</Card.Title>
               <Card.Title>Дата публикации: {getData()}</Card.Title>
+              <Card.Title>Time ago: {item.time_ago}</Card.Title>
               <Card.Text>
                 {/* <Link to="/item" onClick={() => showItem(item.id)} target="_blank"> */}
                 {/* Подробнее */}

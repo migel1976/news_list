@@ -11,20 +11,21 @@ const Navigate = styled.div`
 `;
 
 const Home: React.FC = () => {
-  const { news, error, loading } = useTypedSelector((state) => state.news);
+  const { news, error, loading, page } = useTypedSelector((state) => state.news);
+  // const statePage = useTypedSelector((state) => state.news);
+  // const newsPage = statePage.page;
   const { fetchNews, setNewsPage } = useActions();
-  const [page, setPage] = useState(1);
   useEffect(() => {
     fetchNews(page);
   }, [page]);
 
   const nextPage = () => {
-    setPage((prev) => prev + 1);
-    setNewsPage(page);
+    setNewsPage(page + 1);
   };
 
   const refreshPage = () => {
-    fetchNews(1);
+    setNewsPage(1);
+    fetchNews(page);
   };
 
   if (loading) {
@@ -47,7 +48,6 @@ const Home: React.FC = () => {
       </Navigate>
       {news.map((item) => (
         <Newsitem key={item.id} item={item} />
-        // <div key={item.id}>{item.title}</div>
       ))}
     </>
   );

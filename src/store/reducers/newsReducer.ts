@@ -4,7 +4,7 @@ const initialState: NewsState = {
   news: [],
   loading: false,
   error: null,
-  page: 0,
+  page: 1,
 };
 
 export const newsReducer = (state = initialState, action: NewsAction): NewsState => {
