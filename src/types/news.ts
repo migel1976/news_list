@@ -1,5 +1,18 @@
+export interface News {
+  id: number;
+  title: string;
+  points?: number | null;
+  user?: string | null;
+  time: number;
+  time_ago: string;
+  comments_count: number;
+  type: string;
+  url?: string;
+  domain?: string;
+}
+
 export interface NewsState {
-  news: any[];
+  news: News[];
   loading: boolean;
   error: null | string;
   page: number;
@@ -18,7 +31,7 @@ interface FetchNewsAction {
 
 interface FetchNewsSuccessAction {
   type: NewsActionTypes.FETCH_NEWS_SUCCESS;
-  payload: any[];
+  payload: News[];
 }
 
 interface FetchNewsErrorAction {

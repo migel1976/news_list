@@ -1,4 +1,18 @@
-export interface Item {
+export interface Comment {
+  id: number;
+  user: string;
+  time: number;
+  time_ago: string;
+  type: string;
+  content: string;
+  comments: Comment[];
+  comments_count: number;
+  level: number;
+  url: string;
+  dead?: boolean;
+}
+
+export interface NewsItem {
   id: number;
   title: string;
   points: number | null;
@@ -11,14 +25,14 @@ export interface Item {
   type: string;
   url?: string;
   domain?: string;
-  comments: Item[];
+  comments: Comment[];
   level: number;
   comments_count: number;
 }
 
 export interface ItemState {
-  // item: any;
-  item: Item;
+  // item: NewsItem | object;
+  item: NewsItem;
   loading: boolean;
   error: null | string;
   page: number;
@@ -37,7 +51,7 @@ interface FetchItemAction {
 
 interface FetchItemSuccessAction {
   type: ItemActionTypes.FETCH_ITEM_SUCCESS;
-  payload: any[];
+  payload: NewsItem;
 }
 
 interface FetchItemErrorAction {

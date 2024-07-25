@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { Item } from '../types/item';
+import { NewsItem } from '../types/item';
 import { StyledComment, CommentInfo, CommentToggle, CommentContent } from './Comment.styles';
 
 interface CommentProps {
   key: number;
-  comment: Item;
+  comment: NewsItem;
 }
 
 function Comment({ comment }: CommentProps) {
@@ -16,7 +16,7 @@ function Comment({ comment }: CommentProps) {
         <span>{comment.user}</span>
         <span>{comment.time_ago}</span>
         <CommentToggle onClick={() => setIsHidden(!isHidden)}>
-          {!isHidden ? 'отобразить' : comment.comments_count > 0 ? ` | [${comment.comments_count} комментария]` : ''}
+          {!isHidden ? 'скрыть' : comment.comments_count > 0 ? ` | [${comment.comments_count} комментария]` : ''}
         </CommentToggle>
       </CommentInfo>
       {isHidden || comment.level > 1 ? (

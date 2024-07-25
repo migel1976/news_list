@@ -2,23 +2,25 @@ import { Row, Col, Card, Button } from 'react-bootstrap';
 import styled from 'styled-components';
 import { useActions } from '../hooks/useAction';
 import { Link } from 'react-router-dom';
+import { News } from '../types/news';
 const ItemContainer = styled.div`
   padding-block: 5px;
   margin-block: 5px;
   .card-text {
     display: flex;
-    // justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
-    // background: grey;
-    // align-content: space-between;
   }
 `;
 
-const Newsitem = ({ item }) => {
+interface NewsItemProps {
+  item: News;
+}
+
+const Newsitem = ({ item }: NewsItemProps) => {
   const { setItemPage } = useActions();
-  const showItem = (id) => {
-    setItemPage(id);
+  const showItem = (item: News) => {
+    setItemPage(item.id);
   };
 
   const getData = () => {
@@ -31,19 +33,18 @@ const Newsitem = ({ item }) => {
         <ItemContainer>
           <Card>
             <Card.Body>
-              {/* <Card.Title>{item.time_ago}</Card.Title> */}
               <Card.Title>{item.title}</Card.Title>
               <Card.Title>Автор статьи: {item.user}</Card.Title>
               <Card.Title>Рейтинг: {item.points}</Card.Title>
               <Card.Title>Дата публикации: {getData()}</Card.Title>
               <Card.Title>Time ago: {item.time_ago}</Card.Title>
-              <Card.Text>
-                {/* <Link to="/item" onClick={() => showItem(item.id)} target="_blank"> */}
-                {/* Подробнее */}
+              <Card.Title>Количество комментарий: {item.comments_count}</Card.Title>
+              <Card.Text></Card.Text>
+              <Card.Footer>
                 <Link to="/item">
-                  <Button onClick={() => showItem(item.id)}>Подробнее</Button>
+                  <Button onClick={() => showItem(item)}>Подробнее</Button>
                 </Link>
-              </Card.Text>
+              </Card.Footer>
             </Card.Body>
           </Card>
         </ItemContainer>

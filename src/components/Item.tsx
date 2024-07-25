@@ -6,9 +6,8 @@ import { Button, Card } from 'react-bootstrap';
 import Comment from './Comment';
 
 const Item: React.FC = () => {
-  const { item, error, loading, page } = useTypedSelector((state) => state.item);
-  const news = useTypedSelector((state) => state.news);
-  const pageNews = news.page;
+  const { item, error, loading } = useTypedSelector((state) => state.item);
+  const { page } = useTypedSelector((state) => state.news);
 
   const { fetchItem } = useActions();
   const { fetchNews, setNewsPage } = useActions();
@@ -30,8 +29,8 @@ const Item: React.FC = () => {
   };
 
   const backPage = () => {
-    setNewsPage(pageNews);
-    fetchNews(pageNews);
+    setNewsPage(page);
+    fetchNews(page);
   };
 
   return (

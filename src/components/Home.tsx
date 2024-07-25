@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useActions } from '../hooks/useAction';
 import { useTypedSelector } from '../hooks/useTypedSelector';
 import { Button } from 'react-bootstrap';
@@ -12,8 +12,6 @@ const Navigate = styled.div`
 
 const Home: React.FC = () => {
   const { news, error, loading, page } = useTypedSelector((state) => state.news);
-  // const statePage = useTypedSelector((state) => state.news);
-  // const newsPage = statePage.page;
   const { fetchNews, setNewsPage } = useActions();
   useEffect(() => {
     fetchNews(page);

@@ -16,15 +16,12 @@ const Navibar: React.FC = () => {
     <>
       <Style>
         <Navbar bg="dark" variant="dark">
-          <NavbarBrand>Новости из мира IT</NavbarBrand>
-          <Nav className="mr-auto">
+          <NavbarBrand>
             <Nav.Link as={Link} to="/">
-              Главная
+              Новости из мира IT
             </Nav.Link>
-            {/* <Nav.Link as={Link} to="/news">
-            Новость
-          </Nav.Link> */}
-          </Nav>
+          </NavbarBrand>
+          <Nav className="mr-auto"></Nav>
         </Navbar>
       </Style>
     </>
