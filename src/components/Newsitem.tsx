@@ -22,9 +22,10 @@ const Newsitem = ({ item }: NewsItemProps) => {
     <Row>
       <Col>
         <ItemContainer>
-          <Card>
-            <Card.Body>
-              <Card.Title className="text-uppercase">{item.title}</Card.Title>
+          <Card border="success" bg="warning">
+            <Card.Header className="text-uppercase">{item.title}</Card.Header>
+            <Card.Body style={{ backgroundColor: '#00AA9E' }}>
+              {/* <Card.Title className="text-uppercase">{item.title}</Card.Title> */}
               <Card.Subtitle>Автор статьи: {item.user}</Card.Subtitle>
               <Card.Subtitle>Рейтинг: {item.points}</Card.Subtitle>
               <Card.Subtitle>Дата публикации: {getData()}</Card.Subtitle>
