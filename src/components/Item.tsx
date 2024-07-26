@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useCallback } from 'react';
 import { useActions } from '../hooks/useAction';
 import { useTypedSelector } from '../hooks/useTypedSelector';
 import { Link } from 'react-router-dom';
@@ -15,9 +15,19 @@ const Item: React.FC = () => {
   const { fetchItem } = useActions();
   const { fetchNews, setNewsPage } = useActions();
 
-  useEffect(() => {
+  const updateItem = useCallback(() => {
     fetchItem();
-  }, []);
+  }, [page]);
+
+  useEffect(() => {
+    updateItem();
+    const timer = setInterval(updateItem, 1000 * 60);
+    return () => clearInterval(timer);
+  }, [updateItem]);
+
+  // useEffect(() => {
+  //   fetchItem();
+  // }, []);
 
   if (loading) {
     return (
@@ -65,7 +75,7 @@ const Item: React.FC = () => {
               </Link>
             </Card.Subtitle>
             <Card.Footer>
-              {item && item.comments && item.comments.length > 0 ? `Комментарии` : <></>}
+              {item && item.comments && item.comments.length > 0 ? 'Комментарии' : <></>}
               {item && item.comments && item.comments.length > 0 ? (
                 item.comments.map((comment) => {
                   return <Comment key={comment.id} comment={comment} />;

@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useActions } from '../hooks/useAction';
 import { useTypedSelector } from '../hooks/useTypedSelector';
 import { Button } from 'react-bootstrap';
@@ -8,9 +8,16 @@ import { HeaderPage, Navigate } from './Home.styles';
 const Home: React.FC = () => {
   const { news, error, loading, page } = useTypedSelector((state) => state.news);
   const { fetchNews, setNewsPage } = useActions();
-  useEffect(() => {
+
+  const updateFetchNews = useCallback(() => {
     fetchNews(page);
   }, [page]);
+
+  useEffect(() => {
+    updateFetchNews();
+    const timer = setInterval(updateFetchNews, 1000 * 60);
+    return () => clearInterval(timer);
+  }, [updateFetchNews]);
 
   const nextPage = () => {
     setNewsPage(page + 1);
