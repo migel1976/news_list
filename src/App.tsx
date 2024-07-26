@@ -4,7 +4,7 @@ import Navibar from './components/Navibar';
 import { Container } from 'react-bootstrap';
 import { Route, Routes } from 'react-router-dom';
 
-import Home from './components/Home';
+import News from './components/News';
 import Item from './components/Item';
 
 const App: React.FC = () => {
@@ -13,9 +13,7 @@ const App: React.FC = () => {
       <Container>
         <Navibar />
         <Routes>
-          <Route path="/" element={<Home />}>
-            Главная
-          </Route>
+          <Route path="/" element={<News />} />
           <Route path="/item" element={<Item />} />
         </Routes>
       </Container>

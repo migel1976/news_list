@@ -2,7 +2,7 @@ import { Row, Col, Card } from 'react-bootstrap';
 import { useActions } from '../hooks/useAction';
 import { Link } from 'react-router-dom';
 import { News } from '../types/news';
-import { BodyContainer, ItemContainer } from './Newsitem.styles';
+import { BodyContainer, ItemContainer } from '../styles';
 
 interface NewsItemProps {
   item: News;

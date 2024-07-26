@@ -1,5 +1,5 @@
 import { Nav, Navbar, NavbarBrand } from 'react-bootstrap';
-import { StyleNavbar } from './Navibar.styles';
+import { StyleNavbar } from '../styles';
 
 const Navibar: React.FC = () => {
   return (

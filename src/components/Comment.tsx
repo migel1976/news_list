@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { NewsItem } from '../types/item';
-import { StyledComment, CommentInfo, CommentToggle, CommentContent } from './Comment.styles';
+import { StyledComment, CommentInfo, CommentToggle, CommentContent } from '../styles';
 
 interface CommentProps {
   key: number;

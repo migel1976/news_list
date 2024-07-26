@@ -3,7 +3,8 @@ import { useActions } from '../hooks/useAction';
 import { useTypedSelector } from '../hooks/useTypedSelector';
 import { Button } from 'react-bootstrap';
 import Newsitem from './Newsitem';
-import { HeaderPage, Navigate } from './Home.styles';
+// import { HeaderPage, Navigate } from './News.styles';
+import { HeaderPage, NavigateButton } from '../styles';
 
 const Home: React.FC = () => {
   const { news, error, loading, page } = useTypedSelector((state) => state.news);
@@ -48,14 +49,14 @@ const Home: React.FC = () => {
       <HeaderPage>
         <h1>Лента новостей</h1>
       </HeaderPage>
-      <Navigate>
+      <NavigateButton>
         <div>
           <Button onClick={refreshPage}>Обновить</Button>
         </div>
         <div>
           <Button onClick={nextPage}>Следующая</Button>
         </div>
-      </Navigate>
+      </NavigateButton>
       {news.map((item) => (
         <Newsitem key={item.id} item={item} />
       ))}
