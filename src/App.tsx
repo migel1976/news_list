@@ -6,10 +6,12 @@ import { Route, Routes } from 'react-router-dom';
 
 import Home from './components/Home';
 import Item from './components/Item';
+// import { MainContainer } from './App.styled';
 
 const App: React.FC = () => {
   return (
     <>
+      {/* <MainContainer> */}
       <Navibar />
       <Container>
         <Routes>
@@ -19,6 +21,7 @@ const App: React.FC = () => {
           <Route path="/item" element={<Item />} />
         </Routes>
       </Container>
+      {/* </MainContainer> */}
     </>
   );
 };

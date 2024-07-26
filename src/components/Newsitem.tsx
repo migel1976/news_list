@@ -3,6 +3,7 @@ import { useActions } from '../hooks/useAction';
 import { Link } from 'react-router-dom';
 import { News } from '../types/news';
 import { ItemContainer } from './Newsitem.styles';
+import styled from 'styled-components';
 
 interface NewsItemProps {
   item: News;
@@ -18,6 +19,10 @@ const Newsitem = ({ item }: NewsItemProps) => {
     return new Date(item.time * 1000).toLocaleString();
   };
 
+  // const FooterCustomize = styled.div`
+  //   background: #f00;
+  // `;
+
   return (
     <Row>
       <Col>
@@ -31,11 +36,13 @@ const Newsitem = ({ item }: NewsItemProps) => {
               <Card.Subtitle>Дата публикации: {getData()}</Card.Subtitle>
               {/* <Card.Title>Time ago: {item.time_ago}</Card.Title> */}
               <Card.Subtitle>Количество комментарий: {item.comments_count}</Card.Subtitle>
+              {/* <FooterCustomize> */}
               <Card.Footer>
                 <Link to="/item">
                   <Button onClick={() => showItem(item)}>Подробнее</Button>
                 </Link>
               </Card.Footer>
+              {/* </FooterCustomize> */}
             </Card.Body>
           </Card>
         </ItemContainer>
