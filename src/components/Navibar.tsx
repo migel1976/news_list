@@ -1,5 +1,4 @@
 import { Nav, Navbar, NavbarBrand } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 import { StyleNavbar } from './Navibar.styles';
 
 const Navibar: React.FC = () => {
@@ -7,11 +6,7 @@ const Navibar: React.FC = () => {
     <>
       <StyleNavbar>
         <Navbar bg="dark" variant="dark" expand="lg">
-          <NavbarBrand>
-            <Nav.Link as={Link} to="/">
-              Новости из мира IT
-            </Nav.Link>
-          </NavbarBrand>
+          <NavbarBrand>Новости из мира IT</NavbarBrand>
           <Nav className="mr-auto"></Nav>
         </Navbar>
       </StyleNavbar>
