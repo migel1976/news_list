@@ -15,10 +15,6 @@ a {
     color: #00F;
 }
 
-ul {
-    list-style: none;
-}
-
 body {
     font-family: Verdana, Geneva, sans-serif;
     font-size: 10pt;

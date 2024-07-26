@@ -3,7 +3,6 @@ import { useActions } from '../hooks/useAction';
 import { useTypedSelector } from '../hooks/useTypedSelector';
 import { Button } from 'react-bootstrap';
 import Newsitem from './Newsitem';
-// import { HeaderPage, Navigate } from './News.styles';
 import { HeaderPage, NavigateButton } from '../styles';
 
 const Home: React.FC = () => {

@@ -4,8 +4,6 @@ import { useTypedSelector } from '../hooks/useTypedSelector';
 import { Link } from 'react-router-dom';
 import { Button, Card } from 'react-bootstrap';
 import Comment from './Comment';
-// import { BodyContainer, ItemContainer } from './Newsitem.styles';
-// import { HeaderPage, Navigate } from './News.styles';
 import { HeaderPage, NavigateButton, BodyContainer, ItemContainer } from '../styles';
 
 const Item: React.FC = () => {
