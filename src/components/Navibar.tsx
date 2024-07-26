@@ -1,21 +1,11 @@
 import { Nav, Navbar, NavbarBrand } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { StyleNavbar } from './Navibar.styles';
 
-import styled from 'styled-components';
-
-const Style = styled.div`
-  a.nav-link {
-    padding-left: 20px;
-    color: #0f0;
-    &:hover {
-      color: #f00;
-    }
-  }
-`;
 const Navibar: React.FC = () => {
   return (
     <>
-      <Style>
+      <StyleNavbar>
         <Navbar bg="dark" variant="dark" expand="lg">
           <NavbarBrand>
             <Nav.Link as={Link} to="/">
@@ -24,7 +14,7 @@ const Navibar: React.FC = () => {
           </NavbarBrand>
           <Nav className="mr-auto"></Nav>
         </Navbar>
-      </Style>
+      </StyleNavbar>
     </>
   );
 };

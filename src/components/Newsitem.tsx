@@ -1,9 +1,8 @@
-import { Row, Col, Card, Button } from 'react-bootstrap';
+import { Row, Col, Card } from 'react-bootstrap';
 import { useActions } from '../hooks/useAction';
 import { Link } from 'react-router-dom';
 import { News } from '../types/news';
 import { BodyContainer, ItemContainer } from './Newsitem.styles';
-import styled from 'styled-components';
 
 interface NewsItemProps {
   item: News;
@@ -34,7 +33,6 @@ const Newsitem = ({ item }: NewsItemProps) => {
                 <Card.Footer>
                   <Link to="/item" onClick={() => showItem(item)}>
                     Подробнее
-                    {/* <Button onClick={() => showItem(item)}>Подробнее</Button> */}
                   </Link>
                 </Card.Footer>
               </Card.Body>

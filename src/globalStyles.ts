@@ -12,7 +12,6 @@ export const GlobalStyle = createGlobalStyle`
 
 a {
     text-decoration: none;
-    // color: inherit;
     color: #00F;
 }
 
@@ -26,7 +25,4 @@ body {
     background:#BABDB6;
 }
 
-// a:visited {
-//     color: #828282;
-// }
 `;

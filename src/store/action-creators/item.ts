@@ -11,7 +11,10 @@ export const fetchItem = () => {
       const page = state.item.page;
       const url = `https://api.hnpwa.com/v0/item/${page}.json`;
       const res = await axios.get(url);
-      dispatch({ type: ItemActionTypes.FETCH_ITEM_SUCCESS, payload: res.data });
+      //установлен для отображения надписи Загрузка страницы
+      setTimeout(() => {
+        dispatch({ type: ItemActionTypes.FETCH_ITEM_SUCCESS, payload: res.data });
+      }, 1000);
     } catch (e) {
       dispatch({ type: ItemActionTypes.FETCH_ITEM_ERROR, payload: 'Ошибка при получении информации о новости ' });
     }

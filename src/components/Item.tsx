@@ -6,6 +6,7 @@ import { Button, Card } from 'react-bootstrap';
 import Comment from './Comment';
 import { BackButton } from './Item.styles';
 import { BodyContainer } from './Newsitem.styles';
+import { HeaderPage } from './Home.styles';
 
 const Item: React.FC = () => {
   const { item, error, loading } = useTypedSelector((state) => state.item);
@@ -19,11 +20,18 @@ const Item: React.FC = () => {
   }, []);
 
   if (loading) {
-    return <h1>... идет загрузка</h1>;
+    return (
+      <HeaderPage>
+        <h1>...идет загрузка</h1>
+      </HeaderPage>
+    );
   }
-
   if (error) {
-    return <h1>{error}</h1>;
+    return (
+      <HeaderPage>
+        <h1>{error}</h1>;
+      </HeaderPage>
+    );
   }
 
   const getData = () => {
@@ -37,7 +45,9 @@ const Item: React.FC = () => {
 
   return (
     <>
-      <h1>Подробности</h1>
+      <HeaderPage>
+        <h1>Подробно о новости</h1>
+      </HeaderPage>
       <BackButton>
         <Link to="/">
           <Button onClick={backPage}>Назад</Button>
@@ -47,13 +57,13 @@ const Item: React.FC = () => {
         <Card.Header className="text-uppercase">{item.title}</Card.Header>
         <BodyContainer>
           <Card.Body>
-            <Card.Title>Дата публикации: {getData()}</Card.Title>
-            <Card.Title>Автор статьи: {item.user}</Card.Title>
-            <Card.Title>
+            <Card.Subtitle>Дата публикации: {getData()}</Card.Subtitle>
+            <Card.Subtitle>Автор статьи: {item.user}</Card.Subtitle>
+            <Card.Subtitle>
               <Link to={item.url} target="_blank">
                 Источник новости
               </Link>
-            </Card.Title>
+            </Card.Subtitle>
             <Card.Footer>
               {item && item.comments && item.comments.length > 0 ? `Комментарии` : <></>}
               {item && item.comments && item.comments.length > 0 ? (

@@ -3,18 +3,7 @@ import { useActions } from '../hooks/useAction';
 import { useTypedSelector } from '../hooks/useTypedSelector';
 import { Button } from 'react-bootstrap';
 import Newsitem from './Newsitem';
-import styled from 'styled-components';
-
-const Navigate = styled.div`
-  display: flex;
-  gap: 20px;
-`;
-
-const Header = styled.div`
-  h1 {
-    text-align: center;
-  }
-`;
+import { HeaderPage, Navigate } from './Home.styles';
 
 const Home: React.FC = () => {
   const { news, error, loading, page } = useTypedSelector((state) => state.news);
@@ -34,23 +23,24 @@ const Home: React.FC = () => {
 
   if (loading) {
     return (
-      <Header>
+      <HeaderPage>
         <h1>...идет загрузка</h1>
-      </Header>
+      </HeaderPage>
     );
   }
   if (error) {
-    return;
-    <Header>
-      <h1>{error}</h1>;
-    </Header>;
+    return (
+      <HeaderPage>
+        <h1>{error}</h1>;
+      </HeaderPage>
+    );
   }
 
   return (
     <>
-      <Header>
+      <HeaderPage>
         <h1>Лента новостей</h1>
-      </Header>
+      </HeaderPage>
       <Navigate>
         <div>
           <Button onClick={refreshPage}>Обновить</Button>
