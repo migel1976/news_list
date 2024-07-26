@@ -9,3 +9,7 @@ export const ItemContainer = styled.div`
   //     flex-wrap: wrap;
   //   }
 `;
+
+export const BodyContainer = styled.div`
+  background: #00aa9e;
+`;

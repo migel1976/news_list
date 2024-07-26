@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { Button, Card } from 'react-bootstrap';
 import Comment from './Comment';
 import { BackButton } from './Item.styles';
+import { BodyContainer } from './Newsitem.styles';
 
 const Item: React.FC = () => {
   const { item, error, loading } = useTypedSelector((state) => state.item);
@@ -42,27 +43,29 @@ const Item: React.FC = () => {
           <Button onClick={backPage}>Назад</Button>
         </Link>
       </BackButton>
-      <Card>
-        <Card.Body>
-          <Card.Title>Название статьи: {item.title}</Card.Title>
-          <Card.Title>Дата публикации: {getData()}</Card.Title>
-          <Card.Title>Автор статьи: {item.user}</Card.Title>
-          {/* <Card.Title>Количество комментариев: {item.comments_count}</Card.Title> */}
-          <Link to={item.url} target="_blank">
-            Источник новости
-          </Link>
-          <Card.Text>
-            {item && item.comments && item.comments.length > 0 ? `Комментарии` : <></>}
-            {item && item.comments && item.comments.length > 0 ? (
-              item.comments.map((comment) => {
-                return <Comment key={comment.id} comment={comment} />;
-              })
-            ) : (
-              <></>
-            )}
-          </Card.Text>
-          <Card.Footer></Card.Footer>
-        </Card.Body>
+      <Card border="success" bg="warning">
+        <Card.Header className="text-uppercase">{item.title}</Card.Header>
+        <BodyContainer>
+          <Card.Body>
+            <Card.Title>Дата публикации: {getData()}</Card.Title>
+            <Card.Title>Автор статьи: {item.user}</Card.Title>
+            <Card.Title>
+              <Link to={item.url} target="_blank">
+                Источник новости
+              </Link>
+            </Card.Title>
+            <Card.Footer>
+              {item && item.comments && item.comments.length > 0 ? `Комментарии` : <></>}
+              {item && item.comments && item.comments.length > 0 ? (
+                item.comments.map((comment) => {
+                  return <Comment key={comment.id} comment={comment} />;
+                })
+              ) : (
+                <></>
+              )}
+            </Card.Footer>
+          </Card.Body>
+        </BodyContainer>
       </Card>
     </>
   );

@@ -11,7 +11,8 @@ export const CommentInfo = styled.div`
   display: flex;
   gap: 4px;
 
-  color: #828282;
+  // color: #828282;
+  color: #00f;
   font-size: 10px;
 `;
 
@@ -22,4 +23,6 @@ export const CommentToggle = styled.button`
   cursor: pointer;
 `;
 
-export const CommentContent = styled.div``;
+export const CommentContent = styled.div`
+  background: #00aa8b;
+`;

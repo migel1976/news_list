@@ -10,6 +10,12 @@ const Navigate = styled.div`
   gap: 20px;
 `;
 
+const Header = styled.div`
+  h1 {
+    text-align: center;
+  }
+`;
+
 const Home: React.FC = () => {
   const { news, error, loading, page } = useTypedSelector((state) => state.news);
   const { fetchNews, setNewsPage } = useActions();
@@ -27,15 +33,24 @@ const Home: React.FC = () => {
   };
 
   if (loading) {
-    return <h1>...идет загрузка</h1>;
+    return (
+      <Header>
+        <h1>...идет загрузка</h1>
+      </Header>
+    );
   }
   if (error) {
-    return <h1>{error}</h1>;
+    return;
+    <Header>
+      <h1>{error}</h1>;
+    </Header>;
   }
 
   return (
     <>
-      <h1>Лента новостей</h1>
+      <Header>
+        <h1>Лента новостей</h1>
+      </Header>
       <Navigate>
         <div>
           <Button onClick={refreshPage}>Обновить</Button>
