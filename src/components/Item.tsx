@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { Button, Card } from 'react-bootstrap';
 import Comment from './Comment';
 import { HeaderPage, NavigateButton, BodyContainer, ItemContainer } from '../styles';
+import { getFormatedDate } from '../utills';
 
 const Item: React.FC = () => {
   const { item, error, loading } = useTypedSelector((state) => state.item);
@@ -38,9 +39,11 @@ const Item: React.FC = () => {
     );
   }
 
-  const getData = () => {
-    return new Date(item.time * 1000).toLocaleString();
-  };
+  // const getData = () => {
+  //   return new Date(item.time * 1000).toLocaleString();
+  // };
+
+  // const formatedDate = new Date(item.time * 1000).toLocaleString();
 
   const backPage = () => {
     setNewsPage(page);
@@ -65,7 +68,7 @@ const Item: React.FC = () => {
           <Card.Header className="text-uppercase">{item.title}</Card.Header>
           <BodyContainer>
             <Card.Body>
-              <Card.Subtitle>Дата публикации: {getData()}</Card.Subtitle>
+              <Card.Subtitle>Дата публикации: {getFormatedDate(item.time)}</Card.Subtitle>
               <Card.Subtitle>Автор статьи: {item.user}</Card.Subtitle>
               <Card.Subtitle>
                 <Link to={item.url} target="_blank">
@@ -73,13 +76,13 @@ const Item: React.FC = () => {
                 </Link>
               </Card.Subtitle>
               <Card.Footer>
-                {item && item.comments && item.comments.length > 0 ? 'Комментарии' : <></>}
+                <p>Комментарии</p>
                 {item && item.comments && item.comments.length > 0 ? (
                   item.comments.map((comment) => {
                     return <Comment key={comment.id} comment={comment} />;
                   })
                 ) : (
-                  <></>
+                  <p>Комментариев нет</p>
                 )}
               </Card.Footer>
             </Card.Body>

@@ -1,7 +1,7 @@
 import { Nav, Navbar, NavbarBrand } from 'react-bootstrap';
 import { StyleNavbar } from '../styles';
 
-const Navibar: React.FC = () => {
+const NavBar: React.FC = () => {
   return (
     <>
       <StyleNavbar>
@@ -13,4 +13,4 @@ const Navibar: React.FC = () => {
     </>
   );
 };
-export default Navibar;
+export default NavBar;

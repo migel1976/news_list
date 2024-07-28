@@ -1,3 +1,4 @@
+import { act } from 'react';
 import { NewsState, NewsAction, NewsActionTypes } from '../../types/news';
 
 const initialState: NewsState = {
@@ -14,9 +15,13 @@ export const newsReducer = (state = initialState, action: NewsAction): NewsState
 
     case NewsActionTypes.FETCH_NEWS_SUCCESS:
       action.payload.sort(function (a, b) {
-        return new Date(b.time * 1000) - new Date(a.time * 1000);
+        return new Date(b.time * 1000).valueOf() - new Date(a.time * 1000).valueOf();
       });
-      return { ...state, loading: false, news: action.payload };
+      // const arr = [...state.news];
+      // const arr=Array.push(action.payload)
+      // return { ...state, loading: false, news: [...state.news, action.payload] };
+      // return { ...state, loading: false, news: state.news.push(action.payload) };
+      return { ...state, loading: false, news: [...state.news, ...action.payload] };
 
     case NewsActionTypes.FETCH_NEWS_ERROR:
       return { ...state, loading: false, error: action.payload };

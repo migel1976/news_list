@@ -1,5 +1,5 @@
 import React from 'react';
-import Navibar from './components/Navibar';
+import NavBar from './components/Navbar';
 
 import { Container } from 'react-bootstrap';
 import { Route, Routes } from 'react-router-dom';
@@ -11,7 +11,7 @@ const App: React.FC = () => {
   return (
     <>
       <Container>
-        <Navibar />
+        <NavBar />
         <Routes>
           <Route path="/" element={<News />} />
           <Route path="/item" element={<Item />} />

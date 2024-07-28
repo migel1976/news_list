@@ -19,9 +19,9 @@ const Home: React.FC = () => {
     return () => clearInterval(timer);
   }, [updateFetchNews]);
 
-  const nextPage = () => {
-    setNewsPage(page + 1);
-  };
+  // useEffect(() => {
+  //   fetchNews(1);
+  // }, [page]);
 
   const refreshPage = () => {
     setNewsPage(1);
@@ -53,12 +53,16 @@ const Home: React.FC = () => {
           <Button onClick={refreshPage}>Обновить</Button>
         </div>
         <div>
-          <Button onClick={nextPage}>Следующая</Button>
+          {/* <Button onClick={nextPage}>Следующая</Button> */}
+          <Button onClick={() => setNewsPage(page + 1)}>Следующая</Button>
         </div>
       </NavigateButton>
-      {news.map((item) => (
-        <Newsitem key={item.id} item={item} />
-      ))}
+      {news.map((item, count) => {
+        if (count < 100) return <Newsitem key={item.id} item={item} count={count} />;
+      })}
+      {/* {news.map((item, count) => (
+        <Newsitem key={item.id} item={item} count={count} />
+      ))} */}
     </>
   );
 };

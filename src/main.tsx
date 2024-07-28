@@ -8,12 +8,14 @@ import { store } from './store';
 import { GlobalStyle } from './globalStyles.ts';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
+  // <React.StrictMode>
+  <>
     <GlobalStyle />
     <Provider store={store}>
       <BrowserRouter>
         <App />
       </BrowserRouter>
     </Provider>
-  </React.StrictMode>,
+  </>,
+  // </React.StrictMode>,
 );
