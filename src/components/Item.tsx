@@ -44,9 +44,6 @@ const Item: React.FC = () => {
         <div>
           <Button onClick={() => fetchItem()}>Обновить</Button>
         </div>
-        <Link to="/">
-          <Button onClick={backPage}>Назад</Button>
-        </Link>
       </NavigateButton>
       <ItemContainer>
         <Card border="success" bg="warning">
@@ -60,10 +57,14 @@ const Item: React.FC = () => {
                   Источник новости
                 </Link>
               </Card.Subtitle>
+              <Card.Subtitle>
+                <Link to="/">К ленте новостей</Link>
+              </Card.Subtitle>
               <Card.Footer>
                 <p>Комментарии</p>
                 {item && item.comments && item.comments.length > 0 ? (
                   item.comments.map((comment) => {
+                    // console.log('comment.content', comment.content);
                     return <Comment key={comment.id} comment={comment} />;
                   })
                 ) : (

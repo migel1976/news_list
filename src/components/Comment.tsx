@@ -10,20 +10,26 @@ interface CommentProps {
 const Comment: React.FC<CommentProps> = ({ comment }: CommentProps) => {
   const [isHidden, setIsHidden] = useState(true);
 
+  const text = comment.content.includes('[') ? null : comment.content;
+
   return (
     <StyledComment $indentLevel={comment.level}>
-      <CommentInfo>
-        <span>{comment.user}</span>
-        <span>{comment.time_ago}</span>
-        <CommentToggle onClick={() => setIsHidden(!isHidden)}>
-          {!isHidden ? 'скрыть' : comment.comments_count > 0 ? ` | [${comment.comments_count} комментария]` : ''}
-        </CommentToggle>
-      </CommentInfo>
-      {isHidden || comment.level > 1 ? (
-        <CommentContent dangerouslySetInnerHTML={{ __html: comment.content }} />
+      {text ? (
+        <CommentInfo>
+          <span>{comment.user}</span>
+          <span>{comment.time_ago}</span>
+          <CommentToggle onClick={() => setIsHidden(!isHidden)}>
+            {!isHidden ? 'скрыть' : comment.comments_count > 0 ? ` | [${comment.comments_count} комментария]` : ''}
+          </CommentToggle>
+        </CommentInfo>
+      ) : (
+        <></>
+      )}
+      {isHidden ? (
+        <CommentContent dangerouslySetInnerHTML={{ __html: text }} />
       ) : (
         <>
-          <CommentContent dangerouslySetInnerHTML={{ __html: comment.content }} />
+          <CommentContent dangerouslySetInnerHTML={{ __html: text }} />
           {comment.comments.map((comment) => {
             return <Comment key={comment.id} comment={comment} />;
           })}
