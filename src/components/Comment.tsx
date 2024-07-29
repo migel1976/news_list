@@ -7,7 +7,7 @@ interface CommentProps {
   comment: NewsItem;
 }
 
-function Comment({ comment }: CommentProps) {
+const Comment: React.FC<CommentProps> = ({ comment }: CommentProps) => {
   const [isHidden, setIsHidden] = useState(true);
 
   return (
@@ -31,6 +31,6 @@ function Comment({ comment }: CommentProps) {
       )}
     </StyledComment>
   );
-}
+};
 
 export default Comment;

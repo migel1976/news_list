@@ -4,8 +4,9 @@ import { useTypedSelector } from '../hooks/useTypedSelector';
 import { Link } from 'react-router-dom';
 import { Button, Card } from 'react-bootstrap';
 import Comment from './Comment';
-import { HeaderPage, NavigateButton, BodyContainer, ItemContainer } from '../styles';
+import { NavigateButton, BodyContainer, ItemContainer } from '../styles';
 import { getFormatedDate } from '../utills';
+import HeaderSection from './Headersection';
 
 const Item: React.FC = () => {
   const { item, error, loading } = useTypedSelector((state) => state.item);
@@ -25,25 +26,11 @@ const Item: React.FC = () => {
   }, [updateItem]);
 
   if (loading) {
-    return (
-      <HeaderPage>
-        <h1>...идет загрузка</h1>
-      </HeaderPage>
-    );
+    return <HeaderSection text="...идет загрузка" />;
   }
   if (error) {
-    return (
-      <HeaderPage>
-        <h1>{error}</h1>;
-      </HeaderPage>
-    );
+    return <HeaderSection text={error} />;
   }
-
-  // const getData = () => {
-  //   return new Date(item.time * 1000).toLocaleString();
-  // };
-
-  // const formatedDate = new Date(item.time * 1000).toLocaleString();
 
   const backPage = () => {
     setNewsPage(page);
@@ -52,9 +39,7 @@ const Item: React.FC = () => {
 
   return (
     <>
-      <HeaderPage>
-        <h1>Подробно о новости</h1>
-      </HeaderPage>
+      <HeaderSection text="Лента новостей" />
       <NavigateButton>
         <div>
           <Button onClick={() => fetchItem()}>Обновить</Button>
