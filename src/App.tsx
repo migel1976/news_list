@@ -14,7 +14,7 @@ const App: React.FC = () => {
         <NavBar />
         <Routes>
           <Route path="/" element={<News />} />
-          <Route path="/item" element={<Item />} />
+          <Route path="/item/:id" element={<Item />} />
         </Routes>
       </Container>
     </>

@@ -1,23 +1,23 @@
 import { useEffect, useCallback } from 'react';
 import { useActions } from '../hooks/useAction';
 import { useTypedSelector } from '../hooks/useTypedSelector';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Button, Card } from 'react-bootstrap';
-import Comment from './Comment';
+
 import { NavigateButton, BodyContainer, ItemContainer } from '../styles';
 import { getFormatedDate } from '../utills';
+
 import HeaderSection from './Headersection';
+import Comment from './Comment';
 
 const Item: React.FC = () => {
   const { item, error, loading } = useTypedSelector((state) => state.item);
-  const { page } = useTypedSelector((state) => state.news);
-
   const { fetchItem } = useActions();
-  const { fetchNews, setNewsPage } = useActions();
+  const itemParam = useParams<{ id: string }>();
 
   const updateItem = useCallback(() => {
-    fetchItem();
-  }, [page]);
+    fetchItem(itemParam.id);
+  }, [itemParam]);
 
   useEffect(() => {
     updateItem();
@@ -32,17 +32,12 @@ const Item: React.FC = () => {
     return <HeaderSection text={error} />;
   }
 
-  const backPage = () => {
-    setNewsPage(page);
-    fetchNews(page);
-  };
-
   return (
     <>
-      <HeaderSection text="Лента новостей" />
+      <HeaderSection text="Подробно о новости" />
       <NavigateButton>
         <div>
-          <Button onClick={() => fetchItem()}>Обновить</Button>
+          <Button onClick={() => fetchItem(itemParam.id)}>Обновить</Button>
         </div>
       </NavigateButton>
       <ItemContainer>
@@ -64,7 +59,6 @@ const Item: React.FC = () => {
                 <p>Комментарии</p>
                 {item && item.comments && item.comments.length > 0 ? (
                   item.comments.map((comment) => {
-                    // console.log('comment.content', comment.content);
                     return <Comment key={comment.id} comment={comment} />;
                   })
                 ) : (

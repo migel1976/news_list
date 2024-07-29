@@ -8,7 +8,7 @@ interface HeaderSectionProps {
 const HeaderSection: React.FC<HeaderSectionProps> = ({ text }: HeaderSectionProps) => {
   return (
     <HeaderPage>
-      <h1>{text}</h1>;
+      <h1>{text}</h1>
     </HeaderPage>
   );
 };

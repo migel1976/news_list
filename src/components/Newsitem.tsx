@@ -16,6 +16,8 @@ const Newsitem = ({ item, count }: NewsItemProps) => {
     setItemPage(item.id);
   };
 
+  const url = `/item/${item.id}`;
+
   return (
     <Row>
       <Col>
@@ -31,9 +33,8 @@ const Newsitem = ({ item, count }: NewsItemProps) => {
                 <Card.Subtitle>Дата публикации: {getFormatedDate(item.time)}</Card.Subtitle>
                 <Card.Subtitle>Количество комментарий: {item.comments_count}</Card.Subtitle>
                 <Card.Footer>
-                  <Link to="/item" onClick={() => showItem(item)}>
-                    Подробнее
-                  </Link>
+                  {/* <Link to="/item" onClick={() => showItem(item)}> */}
+                  <Link to={url}>Подробнее</Link>
                 </Card.Footer>
               </Card.Body>
             </BodyContainer>

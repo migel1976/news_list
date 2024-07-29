@@ -25,8 +25,8 @@ const Home: React.FC = () => {
 
   const refreshPage = () => {
     refreshNews();
-    setCountStart(0);
-    setCountEnd(100);
+    setCountStart(START_LENGTH);
+    setCountEnd(END_LENGTH);
   };
   const prevPage = () => {
     setCountStart(countStart - END_LENGTH);
