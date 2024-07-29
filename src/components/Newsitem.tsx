@@ -1,5 +1,4 @@
 import { Row, Col, Card } from 'react-bootstrap';
-import { useActions } from '../hooks/useAction';
 import { Link } from 'react-router-dom';
 import { News } from '../types/news';
 import { BodyContainer, ItemContainer } from '../styles';
@@ -11,11 +10,6 @@ interface NewsItemProps {
 }
 
 const Newsitem = ({ item, count }: NewsItemProps) => {
-  const { setItemPage } = useActions();
-  const showItem = (item: News) => {
-    setItemPage(item.id);
-  };
-
   const url = `/item/${item.id}`;
 
   return (
@@ -33,7 +27,6 @@ const Newsitem = ({ item, count }: NewsItemProps) => {
                 <Card.Subtitle>Дата публикации: {getFormatedDate(item.time)}</Card.Subtitle>
                 <Card.Subtitle>Количество комментарий: {item.comments_count}</Card.Subtitle>
                 <Card.Footer>
-                  {/* <Link to="/item" onClick={() => showItem(item)}> */}
                   <Link to={url}>Подробнее</Link>
                 </Card.Footer>
               </Card.Body>

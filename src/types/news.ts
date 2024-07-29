@@ -23,7 +23,7 @@ export enum NewsActionTypes {
   FETCH_NEWS_DELETE = 'FETCH_NEWS_DELETE',
   FETCH_NEWS_SUCCESS = 'FETCH_NEWS_SUCCESS',
   FETCH_NEWS_ERROR = 'FETCH_NEWS_ERROR',
-  SET_NEWS_PAGE = 'SET_NEWS_PAGE',
+  // SET_NEWS_PAGE = 'SET_NEWS_PAGE',
 }
 
 interface FetchNewsAction {
@@ -44,14 +44,10 @@ interface FetchNewsErrorAction {
   payload: string;
 }
 
-interface SetNewsPage {
-  type: NewsActionTypes.SET_NEWS_PAGE;
-  payload: number;
-}
+// interface SetNewsPage {
+//   type: NewsActionTypes.SET_NEWS_PAGE;
+//   payload: number;
+// }
 
-export type NewsAction =
-  | FetchNewsAction
-  | FetchNewsDeleteAction
-  | FetchNewsSuccessAction
-  | FetchNewsErrorAction
-  | SetNewsPage;
+export type NewsAction = FetchNewsAction | FetchNewsDeleteAction | FetchNewsSuccessAction | FetchNewsErrorAction;
+// | SetNewsPage;

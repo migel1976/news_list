@@ -10,24 +10,22 @@ const START_LENGTH = 0;
 const END_LENGTH = 100;
 
 const Home: React.FC = () => {
-  const { news, error, loading, page } = useTypedSelector((state) => state.news);
+  const { news, error, loading } = useTypedSelector((state) => state.news);
   const { fetchNews } = useActions();
   const [countStart, setCountStart] = useState(0);
   const [countEnd, setCountEnd] = useState(100);
 
   const updateFetchNews = useCallback(() => {
     fetchNews();
-  }, [page]);
+  }, []);
 
   useEffect(() => {
-    // fetchNews();
     updateFetchNews();
     const timer = setInterval(updateFetchNews, 1000 * 60);
     return () => clearInterval(timer);
   }, [updateFetchNews]);
 
   const refreshPage = () => {
-    // refreshNews();
     fetchNews();
     setCountStart(START_LENGTH);
     setCountEnd(END_LENGTH);

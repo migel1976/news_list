@@ -15,8 +15,8 @@ export const itemReducer = (state = initialState, action: ItemAction): ItemState
       return { ...state, loading: false, item: action.payload };
     case ItemActionTypes.FETCH_ITEM_ERROR:
       return { ...state, loading: false, error: action.payload };
-    case ItemActionTypes.SET_ITEM_PAGE:
-      return { ...state, page: action.payload };
+    // case ItemActionTypes.SET_ITEM_PAGE:
+    //   return { ...state, page: action.payload };
     default:
       return state;
   }
