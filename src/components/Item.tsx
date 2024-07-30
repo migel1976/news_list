@@ -8,7 +8,7 @@ import { NavigateButton, BodyContainer, ItemContainer } from '../styles';
 import { getFormatedDate } from '../utills';
 
 import HeaderSection from './Headersection';
-import Comment from './Comment';
+import { CommentEntry } from './Comment';
 
 const Item: React.FC = () => {
   const { item, error, loading } = useTypedSelector((state) => state.item);
@@ -59,7 +59,7 @@ const Item: React.FC = () => {
                 <p>Комментарии</p>
                 {item && item.comments && item.comments.length > 0 ? (
                   item.comments.map((comment) => {
-                    return <Comment key={comment.id} comment={comment} />;
+                    return <CommentEntry key={comment.id} comment={comment} />;
                   })
                 ) : (
                   <p>Комментариев нет</p>

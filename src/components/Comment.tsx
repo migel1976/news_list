@@ -1,12 +1,12 @@
-import { NewsItem } from '../types/item';
+import { Comment } from '../types/item';
 import { StyledComment, CommentInfo, CommentToggle, CommentContent } from '../styles';
 import { useState } from 'react';
 
 interface CommentProps {
-  comment: NewsItem;
+  comment: Comment;
 }
 
-const Comment: React.FC<CommentProps> = ({ comment }: CommentProps) => {
+export const CommentEntry: React.FC<CommentProps> = ({ comment }: CommentProps) => {
   const [isHidden, setIsHidden] = useState(true);
 
   const text = comment.content.includes('[') ? '' : comment.content;
@@ -30,12 +30,10 @@ const Comment: React.FC<CommentProps> = ({ comment }: CommentProps) => {
         <>
           <CommentContent dangerouslySetInnerHTML={{ __html: text }} />
           {comment.comments.map((comment) => {
-            return <Comment key={comment.id} comment={comment} />;
+            return <CommentEntry key={comment.id} comment={comment} />;
           })}
         </>
       )}
     </StyledComment>
   );
 };
-
-export default Comment;
