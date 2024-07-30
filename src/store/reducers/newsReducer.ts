@@ -11,10 +11,7 @@ const initialState: NewsState = {
 export const newsReducer = (state = initialState, action: NewsAction): NewsState => {
   switch (action.type) {
     case NewsActionTypes.FETCH_NEWS:
-      return { ...state, loading: true };
-
-    case NewsActionTypes.FETCH_NEWS_DELETE:
-      return { ...state, loading: false, news: [] };
+      return { ...state, loading: true, news: [] };
 
     case NewsActionTypes.FETCH_NEWS_SUCCESS:
       action.payload.sort(function (a, b) {
