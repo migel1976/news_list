@@ -9,11 +9,11 @@ interface CommentProps {
 const Comment: React.FC<CommentProps> = ({ comment }: CommentProps) => {
   const [isHidden, setIsHidden] = useState(true);
 
-  const text = comment.content.includes('[') ? null : comment.content;
+  const text = comment.content.includes('[') ? '' : comment.content;
 
   return (
     <StyledComment $indentLevel={comment.level}>
-      {text ? (
+      {text !== '' ? (
         <CommentInfo>
           <span>{comment.user}</span>
           <span>{comment.time_ago}</span>

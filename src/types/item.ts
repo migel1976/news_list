@@ -23,9 +23,9 @@ export interface NewsItem {
   deleted?: boolean;
   dead?: boolean;
   type: string;
-  url?: string;
+  url: string;
   domain?: string;
-  comments: Comment[];
+  comments: Array<Comment>;
   level: number;
   comments_count: number;
 }
@@ -41,7 +41,6 @@ export enum ItemActionTypes {
   FETCH_ITEM = 'FETCH_ITEM',
   FETCH_ITEM_SUCCESS = 'FETCH_ITEM_SUCCESS',
   FETCH_ITEM_ERROR = 'FETCH_ITEM_ERROR',
-  // SET_ITEM_PAGE = 'SET_ITEM_PAGE',
 }
 
 interface FetchItemAction {
@@ -58,10 +57,4 @@ interface FetchItemErrorAction {
   payload: string;
 }
 
-// interface SetItemPage {
-//   type: ItemActionTypes.SET_ITEM_PAGE;
-//   payload: number;
-// }
-
-// export type ItemAction = FetchItemAction | FetchItemSuccessAction | FetchItemErrorAction | SetItemPage;
 export type ItemAction = FetchItemAction | FetchItemSuccessAction | FetchItemErrorAction;

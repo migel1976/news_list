@@ -17,7 +17,3 @@ export const fetchItem = (page: string | undefined) => {
     }
   };
 };
-
-// export const setItemPage = (page: number): ItemAction => {
-//   return { type: ItemActionTypes.SET_ITEM_PAGE, payload: page };
-// };

@@ -17,7 +17,7 @@ const Item: React.FC = () => {
 
   const updateItem = useCallback(() => {
     fetchItem(itemParam.id);
-  }, [itemParam]);
+  }, []);
 
   useEffect(() => {
     updateItem();

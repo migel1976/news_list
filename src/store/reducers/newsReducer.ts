@@ -25,9 +25,6 @@ export const newsReducer = (state = initialState, action: NewsAction): NewsState
     case NewsActionTypes.FETCH_NEWS_ERROR:
       return { ...state, loading: false, error: action.payload };
 
-    // case NewsActionTypes.SET_NEWS_PAGE:
-    //   return { ...state, page: action.payload };
-
     default:
       return state;
   }
